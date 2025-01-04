@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | My Portfolio</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #0d6efd;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .skill-badge {
+            transition: transform 0.3s;
+        }
+        
+        .skill-badge:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-section {
+            padding-top: 100px;
+            min-height: calc(100vh - 116px);
+        }
+
+        .footer-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+        z-index: -1;
+    }
+
+    .hover-scale {
+        transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+        transform: scale(1.1);
+    }
+
+    .hover-link {
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .hover-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: #0d6efd;
+        transition: width 0.3s ease;
+    }
+
+    .hover-link:hover {
+        color: #0d6efd !important;
+    }
+
+    .hover-link:hover::after {
+        width: 100%;
+    }
+
+    .social-links .btn {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        line-height: 34px;
+    }
+
+    .social-links .btn i {
+        font-size: 0.9rem;
+    }
+
+    .contact-info i {
+        width: 20px;
+        text-align: center;
+    }
+
+    @media (max-width: 991.98px) {
+        .footer-section {
+            text-align: center;
+        }
+
+        .social-links {
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info li {
+            justify-content: center;
+        }
+    }
+
+    /* Smooth scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">About Me</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <h3 class="mb-4">Experience</h3>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Graphic Designer</h5>
+                            <p class="text-muted">CV Aquila Photography and Printing • 2022 - 2022</p>
+                            <ul class="mb-0">
+                                <li>Creating invitations and yearbooks</li>
+                                <li>Make farewell videos in many schools</li>
+                                <li>Many design posters in Canva and Photoshop</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5>Motion Designer</h5>
+                            <p class="text-muted">CV Playon Kreatif • 2022 - Present</p>
+                            <ul class="mb-0">
+                                <li>Motion Graphics Designer</li>
+                                <li>Animator 2D</li>
+                                <li>Video Editor</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h3 class="mb-4">Skills</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="mb-3">Technical Skills</h5>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-primary p-2 skill-badge">HTML5</span>
+                                <span class="badge bg-primary p-2 skill-badge">CSS3</span>
+                                <span class="badge bg-primary p-2 skill-badge">JavaScript</span>
+                                <span class="badge bg-primary p-2 skill-badge">PHP</span>
+                                <span class="badge bg-primary p-2 skill-badge">Database</span>
+                                <span class="badge bg-primary p-2 skill-badge">Bootstrap</span>
+                            </div>
+                            <h5 class="mb-3">Design Skills</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-success p-2 skill-badge">Figma</span>
+                                <span class="badge bg-success p-2 skill-badge">Canva</span>
+                                <span class="badge bg-success p-2 skill-badge">Photoshop</span>
+                                <span class="badge bg-success p-2 skill-badge">Illustrator</span>
+                                <span class="badge bg-success p-2 skill-badge">AfterEffect</span>
+                                <span class="badge bg-success p-2 skill-badge">PremierePro</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+<footer class="footer-section bg-dark text-light py-5 mt-5">
+    <div class="container">
+        <!-- Top Footer -->
+        <div class="row g-4 mb-4">
+            <!-- About Column -->
+            <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+                <h5 class="text-primary fw-bold mb-4">Roy Yogi Saputra</h5>
+                <p class="text-light-50 mb-4">Passionate Web Developer creating innovative digital solutions. Specializing in front-end development and modern web technologies.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+                <h5 class="text-primary fw-bold mb-4">Quick Links</h5>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-unstyled footer-links">
+                            <li class="mb-2">
+                                <a href="index.html" class="text-light text-decoration-none hover-link">Home</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="about.html" class="text-light text-decoration-none hover-link">About</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="contact.html" class="text-light text-decoration-none hover-link">Services</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-unstyled footer-links">
+                            <li class="mb-2">
+                                <a href="gallery.html" class="text-light text-decoration-none hover-link">Portfolio</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="index.html" class="text-light text-decoration-none hover-link">Blog</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="contact.html" class="text-light text-decoration-none hover-link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <h5 class="text-primary fw-bold mb-4">Contact Info</h5>
+                <ul class="list-unstyled contact-info">
+                    <li class="d-flex mb-3">
+                        <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                        <p class="mb-0">Wedarijaksa, Pati, Jawa Tengah</p>
+                    </li>
+                    <li class="d-flex mb-3">
+                        <i class="fas fa-phone text-primary me-3 mt-1"></i>
+                        <p class="mb-0">+6289669780427</p>
+                    </li>
+                    <li class="d-flex">
+                        <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                        <p class="mb-0">royyogis@gmail.com</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="border-light my-4">
+
+        <!-- Bottom Footer -->
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0">© <span id="year"></span> Roy Yogi Saputra. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                <a href="gallery.html" class="text-light text-decoration-none me-3 hover-link">Privacy Policy</a>
+                <a href="about.html" class="text-light text-decoration-none me-3 hover-link">Terms of Service</a>
+                <a href="contact.html" class="text-light text-decoration-none hover-link">FAQ</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+    </script>
+</body>
+</html>

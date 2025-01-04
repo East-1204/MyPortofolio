@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | My Portfolio</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #0d6efd;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .gallery-section {
+            padding-top: 100px;
+            min-height: calc(100vh - 116px);
+        }
+        
+        .project-card {
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-item.hide {
+            display: none;
+        }
+
+        .modal-image {
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+    /* Previous styles remain the same */
+    .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #0d6efd;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .gallery-section {
+            padding-top: 100px;
+            min-height: calc(100vh - 116px);
+        }
+        
+        .project-card {
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-item.hide {
+            display: none;
+        }
+
+        .modal-image {
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+        /* New styles for popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+            max-width: 80%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .popup-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .popup-content {
+            margin-bottom: 15px;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .popup-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            padding-right: 20px;
+        }
+
+        .popup-category {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        .popup-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .popup-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+        z-index: -1;
+    }
+
+    .hover-scale {
+        transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+        transform: scale(1.1);
+    }
+
+    .hover-link {
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .hover-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: #0d6efd;
+        transition: width 0.3s ease;
+    }
+
+    .hover-link:hover {
+        color: #0d6efd !important;
+    }
+
+    .hover-link:hover::after {
+        width: 100%;
+    }
+
+    .social-links .btn {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        line-height: 34px;
+    }
+
+    .social-links .btn i {
+        font-size: 0.9rem;
+    }
+
+    .contact-info i {
+        width: 20px;
+        text-align: center;
+    }
+
+    @media (max-width: 991.98px) {
+        .footer-section {
+            text-align: center;
+        }
+
+        .social-links {
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info li {
+            justify-content: center;
+        }
+    }
+
+    /* Smooth scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">My Projects</h2>
+            
+            <div class="text-center mb-4">
+                <div class="btn-group" role="group" aria-label="Project filters">
+                    <button type="button" class="btn btn-outline-primary active filter-btn" data-filter="all">All</button>
+                    <button type="button" class="btn btn-outline-primary filter-btn" data-filter="web">Web Development</button>
+                    <button type="button" class="btn btn-outline-primary filter-btn" data-filter="design">UI/UX Design</button>
+                </div>
+            </div>
+
+            <div class="row g-4" id="project-container">
+                <div class="col-md-6 col-lg-4 project-item" data-category="web" data-aos="fade-up">
+                    <div class="card project-card h-100">
+                        <img src="kjm.png" class="card-img-top project-image" alt="E-commerce Website">
+                        <div class="card-body">
+                            <h5 class="card-title">E-commerce Website</h5>
+                            <p class="text-muted">Web Development</p>
+                            <p class="card-text">A fully responsive e-commerce platform built with PHP and SQL.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-secondary">Html</span>
+                                <span class="badge bg-secondary">JavaScript</span>
+                                <span class="badge bg-secondary">CSS</span>
+                                <span class="badge bg-secondary">PHP</span>
+                                <span class="badge bg-secondary">SQL</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-sm btn-outline-primary view-details" 
+                                    data-title="E-commerce Website" 
+                                    data-description="A comprehensive e-commerce platform featuring user authentication, product management, shopping cart functionality, and secure payment integration. Built using CSS for the frontend and PHP for the backend. SQL is used for data storage."
+                                    data-image="kjm.png"
+                                    data-category="Web Development"
+                                    data-technologies="PHP, CSS, SQL, JS, HTML">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 project-item" data-category="design" data-aos="fade-up">
+                    <div class="card project-card h-100">
+                        <img src="jasirah.jpg" class="card-img-top project-image" alt="Mobile App Design">
+                        <div class="card-body">
+                            <h5 class="card-title">Mobile App Design</h5>
+                            <p class="text-muted">UI/UX Design</p>
+                            <p class="card-text">Mobile app interface design for a historical tourist attraction app.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-secondary">Figma</span>
+                                <span class="badge bg-secondary">UI Design</span>
+                                <span class="badge bg-secondary">Prototyping</span>
+                                <span class="badge bg-secondary">Xcode</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-sm btn-outline-primary view-details"
+                                    data-title="Mobile App Design"
+                                    data-description="Modern and intuitive historical tourism application design with a focus on user experience and a clean interface. Its features include historical tourist attractions, maps for places to eat, and there are also Central Java UMKM products. Designed in Figma with extensive user research and testing."
+                                    data-image="jasirah.jpg"
+                                    data-category="UI/UX Design"
+                                    data-technologies="Figma,UI Design,Prototyping,User Research, Apple Developer">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 project-item" data-category="web" data-aos="fade-up">
+                    <div class="card project-card h-100">
+                        <img src="jjk.png" class="card-img-top project-image" alt="Task Management App">
+                        <div class="card-body">
+                            <h5 class="card-title">Fan Website</h5>
+                            <p class="text-muted">Web Development</p>
+                            <p class="card-text">Jujutsu Kaisen fanbase app with real time updates.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-secondary">HTML</span>
+                                <span class="badge bg-secondary">CSS</span>
+                                <span class="badge bg-secondary">JS</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <button class="btn btn-sm btn-outline-primary view-details"
+                                    data-title="Fan Website"
+                                    data-description="JJK fanbase application made with CSS and JS. Features include JJK discussion forum, latest JJK appearances, JJK opening videos, and JJK characters. Designed with CSS for a modern look."
+                                    data-image="jjk.png"
+                                    data-category="Web Development"
+                                    data-technologies="HTML, CSS, JS">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="projectModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img class="w-100 mb-4 modal-image rounded" src="" alt="">
+                    <p class="text-muted category-text"></p>
+                    <p class="description-text"></p>
+                    <h6 class="mt-4 mb-2">Technologies Used:</h6>
+                    <div class="technologies-container"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add these divs before the footer -->
+    <div class="popup-backdrop"></div>
+    <div class="popup">
+        <div class="popup-close">&times;</div>
+        <h3 class="popup-title"></h3>
+        <div class="popup-category"></div>
+        <div class="popup-description"></div>
+        <h6 class="text-light mb-2">Technologies:</h6>
+        <div class="popup-technologies"></div>
+    </div>
+
+<!-- Footer -->
+<footer class="footer-section bg-dark text-light py-5 mt-5">
+    <div class="container">
+        <!-- Top Footer -->
+        <div class="row g-4 mb-4">
+            <!-- About Column -->
+            <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+                <h5 class="text-primary fw-bold mb-4">Roy Yogi Saputra</h5>
+                <p class="text-light-50 mb-4">Passionate Web Developer creating innovative digital solutions. Specializing in front-end development and modern web technologies.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+                <h5 class="text-primary fw-bold mb-4">Quick Links</h5>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-unstyled footer-links">
+                            <li class="mb-2">
+                                <a href="index.html" class="text-light text-decoration-none hover-link">Home</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="about.html" class="text-light text-decoration-none hover-link">About</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="contact.html" class="text-light text-decoration-none hover-link">Services</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-unstyled footer-links">
+                            <li class="mb-2">
+                                <a href="gallery.html" class="text-light text-decoration-none hover-link">Portfolio</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="index.html" class="text-light text-decoration-none hover-link">Blog</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="contact.html" class="text-light text-decoration-none hover-link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <h5 class="text-primary fw-bold mb-4">Contact Info</h5>
+                <ul class="list-unstyled contact-info">
+                    <li class="d-flex mb-3">
+                        <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                        <p class="mb-0">Wedarijaksa, Pati, Jawa Tengah</p>
+                    </li>
+                    <li class="d-flex mb-3">
+                        <i class="fas fa-phone text-primary me-3 mt-1"></i>
+                        <p class="mb-0">+6289669780427</p>
+                    </li>
+                    <li class="d-flex">
+                        <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                        <p class="mb-0">royyogis@gmail.com</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="border-light my-4">
+
+        <!-- Bottom Footer -->
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0">© <span id="year"></span> Roy Yogi Saputra. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                <a href="gallery.html" class="text-light text-decoration-none me-3 hover-link">Privacy Policy</a>
+                <a href="about.html" class="text-light text-decoration-none me-3 hover-link">Terms of Service</a>
+                <a href="contact.html" class="text-light text-decoration-none hover-link">FAQ</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+AOS.init({
+    duration: 1000,
+    once: true
+});
+
+// Project data
+const projectsData = {
+    1: {
+        title: "E-commerce Website",
+        category: "Web Development",
+        description: "A comprehensive e-commerce platform featuring user authentication, product management, shopping cart functionality, and secure payment integration. Built using CSS for the frontend and PHP for the backend. SQL is used for data storage.",
+        image: "kjm.png",
+        technologies: ["PHP", "CSS", "SQL", "JS", "HTML"]
+    },
+    2: {
+        title: "Mobile App Design",
+        category: "UI/UX Design",
+        description: "Modern and intuitive historical tourism application design with a focus on user experience and a clean interface. Its features include historical tourist attractions, maps for places to eat, and there are also Central Java UMKM products. Designed in Figma with extensive user research and testing.",
+        image: "jasirah.jpg",
+        technologies: ["Figma", "UI Design", "Prototyping", "User Research", "Apple Developer"]
+    },
+    3: {
+        title: "Fan Website",
+        category: "Web Development",
+        description: "JJK fanbase application made with CSS and JS. Features include JJK discussion forum, latest JJK appearances, JJK opening videos, and JJK characters. Designed with CSS for a modern look.",
+        image: "jjk.png",
+        technologies: ["HTML", "CSS", "JS"]
+    }
+};
+
+// Filter functionality
+document.querySelectorAll('[data-filter]').forEach(button => {
+    button.addEventListener('click', (e) => {
+        // Remove active class from all buttons
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Add active class to clicked button
+        e.target.classList.add('active');
+        
+        const filter = e.target.getAttribute('data-filter');
+        
+        // Filter projects
+        document.querySelectorAll('.project-item').forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                item.classList.remove('hide');
+            } else {
+                item.classList.add('hide');
+            }
+        });
+    });
+});
+
+// Modal functionality
+function showProjectDetails(projectId) {
+    const project = projectsData[projectId];
+    const modalEl = document.getElementById('projectModal');
+    
+    modalEl.querySelector('.modal-title').textContent = project.title;
+    modalEl.querySelector('.modal-image').src = project.image;
+    modalEl.querySelector('.modal-image').alt = project.title;
+    modalEl.querySelector('.category-text').textContent = project.category;
+    modalEl.querySelector('.description-text').textContent = project.description;
+    
+    const techContainer = modalEl.querySelector('.technologies-container');
+    techContainer.innerHTML = project.technologies
+        .map(tech => `<span class="badge bg-secondary me-2">${tech}</span>`)
+        .join('');
+}
+
+// Filter functionality remains the same
+document.querySelectorAll('[data-filter]').forEach(button => {
+        button.addEventListener('click', (e) => {
+            document.querySelectorAll('[data-filter]').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            e.target.classList.add('active');
+            const filter = e.target.getAttribute('data-filter');
+            document.querySelectorAll('.project-item').forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    item.classList.remove('hide');
+                } else {
+                    item.classList.add('hide');
+                }
+            });
+        });
+    });
+
+    // New popup functionality
+    document.querySelectorAll('.view-details').forEach((button, index) => {
+        button.addEventListener('click', () => {
+            const projectId = index + 1;
+            showProjectDetails(projectId);
+        });
+    });
+
+    function showProjectDetails(projectId) {
+        const project = projectsData[projectId];
+        const popup = document.querySelector('.popup');
+        const backdrop = document.querySelector('.popup-backdrop');
+
+        popup.querySelector('.popup-title').textContent = project.title;
+        popup.querySelector('.popup-category').textContent = project.category;
+        popup.querySelector('.popup-description').textContent = project.description;
+        
+        const techContainer = popup.querySelector('.popup-technologies');
+        techContainer.innerHTML = project.technologies
+            .map(tech => `<span class="badge bg-secondary">${tech}</span>`)
+            .join('');
+
+        popup.style.display = 'block';
+        backdrop.style.display = 'block';
+    }
+
+    // Close popup functionality
+    document.querySelector('.popup-close').addEventListener('click', closePopup);
+    document.querySelector('.popup-backdrop').addEventListener('click', closePopup);
+
+    function closePopup() {
+        document.querySelector('.popup').style.display = 'none';
+        document.querySelector('.popup-backdrop').style.display = 'none';
+    }
+
+    // Close popup when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closePopup();
+        }
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    </script>
+</body>
+</html>

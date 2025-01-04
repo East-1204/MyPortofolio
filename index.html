@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | My Portfolio</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(45deg, #ffffff72 30%, #ffffff 100%);
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #0d6efd;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+        z-index: -1;
+    }
+
+    .hover-scale {
+        transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+        transform: scale(1.1);
+    }
+
+    .hover-link {
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .hover-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: #0d6efd;
+        transition: width 0.3s ease;
+    }
+
+    .hover-link:hover {
+        color: #0d6efd !important;
+    }
+
+    .hover-link:hover::after {
+        width: 100%;
+    }
+
+    .social-links .btn {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        line-height: 34px;
+    }
+
+    .social-links .btn i {
+        font-size: 0.9rem;
+    }
+
+    .contact-info i {
+        width: 20px;
+        text-align: center;
+    }
+
+    @media (max-width: 991.98px) {
+        .footer-section {
+            text-align: center;
+        }
+
+        .social-links {
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info li {
+            justify-content: center;
+        }
+    }
+
+    /* Smooth scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div id="greeting" class="h5 text-primary mb-3"></div>
+                    <h1 class="display-4 fw-bold mb-4">Roy Yogi Saputra</h1>
+                    <p class="lead mb-4">Front End Developer & Graphic Designer</p>
+                    <p class="mb-4">Passionate about creating beautiful and functional web experiences.</p>
+                    <a href="contact.html" class="btn btn-primary me-2">Contact Me</a>
+                    <a href="about.html" class="btn btn-outline-primary">Learn More</a><br><br><br><br>
+                </div>
+                <div class="col-lg-6 text-center" data-aos="fade-left">
+                    <img src="p.jpeg" alt="Profile" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+<footer class="footer-section bg-dark text-light py-5 mt-5">
+    <div class="container">
+        <!-- Top Footer -->
+        <div class="row g-4 mb-4">
+            <!-- About Column -->
+            <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+                <h5 class="text-primary fw-bold mb-4">Roy Yogi Saputra</h5>
+                <p class="text-light-50 mb-4">Passionate Web Developer creating innovative digital solutions. Specializing in front-end development and modern web technologies.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+                <h5 class="text-primary fw-bold mb-4">Quick Links</h5>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-unstyled footer-links">
+                            <li class="mb-2">
+                                <a href="index.html" class="text-light text-decoration-none hover-link">Home</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="about.html" class="text-light text-decoration-none hover-link">About</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="contact.html" class="text-light text-decoration-none hover-link">Services</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-unstyled footer-links">
+                            <li class="mb-2">
+                                <a href="gallery.html" class="text-light text-decoration-none hover-link">Portfolio</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="index.html" class="text-light text-decoration-none hover-link">Blog</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="contact.html" class="text-light text-decoration-none hover-link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <h5 class="text-primary fw-bold mb-4">Contact Info</h5>
+                <ul class="list-unstyled contact-info">
+                    <li class="d-flex mb-3">
+                        <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                        <p class="mb-0">Wedarijaksa, Pati, Jawa Tengah</p>
+                    </li>
+                    <li class="d-flex mb-3">
+                        <i class="fas fa-phone text-primary me-3 mt-1"></i>
+                        <p class="mb-0">+6289669780427</p>
+                    </li>
+                    <li class="d-flex">
+                        <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                        <p class="mb-0">royyogis@gmail.com</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="border-light my-4">
+
+        <!-- Bottom Footer -->
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0">© <span id="year"></span> Roy Yogi Saputra. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                <a href="gallery.html" class="text-light text-decoration-none me-3 hover-link">Privacy Policy</a>
+                <a href="about.html" class="text-light text-decoration-none me-3 hover-link">Terms of Service</a>
+                <a href="contact.html" class="text-light text-decoration-none hover-link">FAQ</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Greeting based on time of day
+        function setGreeting() {
+            const hour = new Date().getHours();
+            let greeting;
+            
+            if (hour >= 5 && hour < 12) {
+                greeting = "Selamat Pagi! 🌅";
+            } else if (hour >= 12 && hour < 15) {
+                greeting = "Selamat Siang! ☀️";
+            } else if (hour >= 15 && hour < 18) {
+                greeting = "Selamat Sore! 🌤";
+            } else {
+                greeting = "Selamat Malam! 🌙";
+            }
+            
+            document.getElementById('greeting').textContent = greeting;
+        }
+
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Initial call
+        setGreeting();
+
+        // Update greeting every minute
+        setInterval(setGreeting, 60000);
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+    </script>
+</body>
+</html>
